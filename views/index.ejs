@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>ЖИ-Навигатор</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header>
+        <h1>🌐 ЖИ-Навигатор</h1>
+        <p>Школа №1 им. Д.А.Конаева</p>
+    </header>
+
+    <div class="nav-buttons">
+        <a href="/" class="active">🏠 Главная</a>
+        <a href="/add">➕ Добавить</a>
+        <a href="/about">ℹ️ О проекте</a>
+    </div>
+
+    <main class="container">
+        <div class="stats">📊 Всего практик: <%= practices.length %></div>
+
+        <% if (practices.length === 0) { %>
+            <div class="empty">
+                <p>Пока нет ни одной практики. Будьте первым!</p>
+                <a href="/add" class="btn">➕ Добавить практику</a>
+            </div>
+        <% } else { %>
+            <div class="practices-grid">
+                <% practices.forEach(p => { %>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3><%= p.teacherName %></h3>
+                            <span class="rating">⭐ <%= p.rating || '?' %>/5</span>
+                        </div>
+                        <div class="card-meta">
+                            <span class="subject"><%= p.subject %></span>
+                            <span class="grade"><%= p.grade %> класс</span>
+                        </div>
+                        <p class="card-desc"><%= p.description.substring(0, 100) %>...</p>
+                        <!-- КНОПКА ПОД ТЕКСТОМ -->
+                        <a href="/practice/<%= p.id %>" class="btn btn-view">🔍 Подробнее →</a>
+                    </div>
+                <% }) %>
+            </div>
+        <% } %>
+    </main>
+
+    <footer>
+        <p>© 2025 ЖИ-Навигатор | Школа №1 им. Д.А.Конаева</p>
+    </footer>
+</body>
+</html>

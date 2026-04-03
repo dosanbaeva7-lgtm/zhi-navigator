@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить практику</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+    <h1>📝 Добавить практику</h1>
+
+    <div class="nav-buttons">
+        <a href="/">🏠 Главная</a>
+        <a href="/add" class="active">➕ Добавить</a>
+        <a href="/about">ℹ️ О проекте</a>
+    </div>
+
+    <% if (error) { %>
+        <div class="error"><%= error %></div>
+    <% } %>
+
+    <form action="/add" method="post">
+
+        <p>
+            <b>👩‍🏫 ФИО учителя *</b>
+            <input type="text" name="teacherName" placeholder="Пример: Досанбаева Салтанат" required>
+        </p>
+
+        <p>
+            <b>📚 Предмет *</b>
+            <input type="text" name="subject" placeholder="Пример: Математика, Казахский язык" required>
+        </p>
+
+        <p>
+            <b>🎓 Класс *</b>
+            <input type="text" name="grade" placeholder="Пример: 7, 10" required>
+        </p>
+
+        <p>
+            <b>🤖 ИИ-инструменты</b>
+            <label><input type="checkbox" name="tools" value="ChatGPT"> ChatGPT</label>
+            <label><input type="checkbox" name="tools" value="Gemini"> Gemini</label>
+            <label><input type="checkbox" name="tools" value="Claude"> Claude</label>
+            <label><input type="checkbox" name="tools" value="Canva AI"> Canva AI</label>
+            <label><input type="checkbox" name="tools" value="Midjourney"> Midjourney</label>
+            <label><input type="checkbox" name="tools" value="DALL-E"> DALL-E</label>
+            <label><input type="checkbox" name="tools" value="Copilot"> Copilot</label>
+            <label><input type="checkbox" name="tools" value="Gamma"> Gamma</label>
+        </p>
+
+        <p>
+            <b>🎯 Цели использования</b>
+            <label><input type="checkbox" name="purposes" value="Планирование уроков"> Планирование уроков</label>
+            <label><input type="checkbox" name="purposes" value="Создание контента"> Создание контента</label>
+            <label><input type="checkbox" name="purposes" value="Оценивание"> Оценивание</label>
+            <label><input type="checkbox" name="purposes" value="Создание тестов"> Создание тестов</label>
+            <label><input type="checkbox" name="purposes" value="Презентации"> Презентации</label>
+        </p>
+
+        <p>
+            <b>⭐ Оценка (1-5)</b>
+            <select name="rating">
+                <option value="">Выберите оценку</option>
+                <option value="5">5 - Отлично</option>
+                <option value="4">4 - Хорошо</option>
+                <option value="3">3 - Средне</option>
+                <option value="2">2 - Плохо</option>
+                <option value="1">1 - Ужасно</option>
+            </select>
+        </p>
+
+        <p>
+            <b>⏱️ Экономия времени</b>
+            <select name="timeSaving">
+                <option value="">Выберите</option>
+                <option>Очень много (50%+)</option>
+                <option>Много (30-50%)</option>
+                <option>Средне (10-30%)</option>
+                <option>Мало (&lt;10%)</option>
+            </select>
+        </p>
+
+        <p>
+            <b>📝 Описание практики *</b>
+            <textarea name="description" rows="4" placeholder="Опишите ваш опыт использования ИИ на уроке..." required></textarea>
+        </p>
+
+        <p>
+            <b>💬 Пример промпта (необязательно)</b>
+            <textarea name="promptExample" rows="3" placeholder="Напишите промпт, который вы использовали..."></textarea>
+        </p>
+
+        <p>
+            <b>💡 Совет коллегам (необязательно)</b>
+            <textarea name="advice" rows="2" placeholder="Что посоветуете другим учителям?"></textarea>
+        </p>
+
+        <p>
+            <b>🤝 Готовность делиться</b>
+            <select name="sharingReady">
+                <option value="Да">Да, готов делиться</option>
+                <option value="Условно">Условно</option>
+                <option value="Нет">Нет, только внутреннее</option>
+            </select>
+        </p>
+
+        <p>
+            <b>📞 Контактная информация (необязательно)</b>
+            <input type="text" name="contactInfo" placeholder="Email или телефон">
+        </p>
+
+        <button type="submit">💾 Сохранить практику</button>
+
+    </form>
+
+    <footer>
+        <p>© 2025 ЖИ-Навигатор | Школа №1 им. Д.А.Конаева</p>
+    </footer>
+
+</body>
+</html>

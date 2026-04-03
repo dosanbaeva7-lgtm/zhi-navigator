@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Админ-панель | ЖИ-Навигатор</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        .admin-header {
+            background: linear-gradient(135deg, #0f3460, #16213e);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .admin-header h1 { margin: 0; font-size: 1.8rem; }
+        .admin-header p { margin: 0.5rem 0 0; opacity: 0.9; }
+        
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .admin-table th {
+            background: #0f3460;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+        .admin-table td {
+            padding: 12px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .admin-table tr:hover {
+            background: #f1f5f9;
+        }
+        .delete-btn {
+            background: #dc2626;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 12px;
+            transition: background 0.2s;
+        }
+        .delete-btn:hover {
+            background: #b91c1c;
+        }
+        .stats {
+            background: #e2e8f0;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 1.5rem;
+            color: #0f3460;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="admin-header">
+        <h1>👑 Админ-панель</h1>
+        <p>Управление практиками учителей</p>
+    </div>
+
+    <div class="nav-buttons">
+        <a href="/">🏠 Главная</a>
+        <a href="/add">➕ Добавить</a>
+        <a href="/about">ℹ️ О проекте</a>
+    </div>
+
+    <div class="stats">📊 Всего практик: <%= practices.length %></div>
+
+    <% if (practices.length === 0) { %>
+        <div class="empty">
+            <p>Пока нет ни одной практики.</p>
+        </div>
+    <% } else { %>
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Учитель</th>
+                    <th>Предмет</th>
+                    <th>Класс</th>
+                    <th>Оценка</th>
+                    <th>Дата</th>
+                    <th>Действие</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% practices.forEach(p => { %>
+                <tr>
+                    <td><%= p.id %></td>
+                    <td><strong><%= p.teacherName %></strong></td>
+                    <td><%= p.subject %></td>
+                    <td><%= p.grade %></td>
+                    <td><%= p.rating || '-' %></td>
+                    <td><%= new Date(p.createdAt).toLocaleDateString() %></td>
+                    <td>
+                        <a href="/admin/delete/<%= ADMIN_KEY %>/<%= p.id %>" 
+                           class="delete-btn" 
+                           onclick="return confirm('Удалить практику учителя \"<%= p.teacherName %>\"? Это действие нельзя отменить.')">
+                            🗑 Удалить
+                        </a>
+                    </td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    <% } %>
+
+    <a href="/" class="back-link">← Вернуться на главную</a>
+</div>
+
+<footer>
+    <p>© 2025 ЖИ-Навигатор | Школа №1 им. Д.А.Конаева</p>
+</footer>
+
+</body>
+</html>

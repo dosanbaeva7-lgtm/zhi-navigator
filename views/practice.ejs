@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title><%= practice.teacherName %> - практика</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+    <h1>🔍 Детали практики</h1>
+
+    <div class="nav-buttons">
+        <a href="/">🏠 Главная</a>
+        <a href="/add">➕ Добавить</a>
+        <a href="/about">ℹ️ О проекте</a>
+    </div>
+
+    <div style="background: white; padding: 2rem; border-radius: 24px;">
+        <h2 style="color: #0f3460;"><%= practice.teacherName %></h2>
+        
+        <div style="display: flex; gap: 0.5rem; margin: 1rem 0; flex-wrap: wrap;">
+            <span style="background: #dbeafe; padding: 0.3rem 0.8rem; border-radius: 20px;"><%= practice.subject %></span>
+            <span style="background: #dbeafe; padding: 0.3rem 0.8rem; border-radius: 20px;"><%= practice.grade %> класс</span>
+            <% if (practice.rating) { %>
+                <span style="background: #fbbf24; padding: 0.3rem 0.8rem; border-radius: 20px;">⭐ <%= practice.rating %>/5</span>
+            <% } %>
+        </div>
+
+        <div style="margin: 1.5rem 0;">
+            <h3 style="color: #0f3460;">📝 Описание</h3>
+            <p style="line-height: 1.5;"><%= practice.description %></p>
+        </div>
+
+        <% if (practice.promptExample) { %>
+        <div style="margin: 1.5rem 0;">
+            <h3 style="color: #0f3460;">💬 Пример промпта</h3>
+            <div style="background: #1e1e2e; color: #e2e8f0; padding: 1rem; border-radius: 12px; font-family: monospace;"><%= practice.promptExample %></div>
+        </div>
+        <% } %>
+
+        <% if (practice.advice) { %>
+        <div style="margin: 1.5rem 0;">
+            <h3 style="color: #0f3460;">💡 Совет</h3>
+            <div style="background: #fef3c7; padding: 1rem; border-radius: 12px;"><%= practice.advice %></div>
+        </div>
+        <% } %>
+
+        <div style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #e2e8f0; color: #64748b; font-size: 0.8rem;">
+            📅 Добавлено: <%= new Date(practice.createdAt).toLocaleString() %>
+        </div>
+    </div>
+
+    <footer style="margin-top: 2rem;">
+        <p>© 2025 ЖИ-Навигатор | Школа №1 им. Д.А.Конаева</p>
+    </footer>
+
+</body>
+</html>

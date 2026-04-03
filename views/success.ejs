@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Практика добавлена</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 50px; background: #f0f4ff; }
+        .box { background: white; padding: 30px; border-radius: 20px; max-width: 500px; margin: 0 auto; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        h1 { color: #0f3460; }
+        .btn { background: #0f3460; color: white; padding: 10px 20px; text-decoration: none; border-radius: 8px; display: inline-block; margin: 10px; border: none; cursor: pointer; }
+        .btn:hover { background: #1e4a76; }
+        .token-box { background: #fef3c7; padding: 15px; border-radius: 12px; margin: 20px 0; text-align: left; }
+        .token-box code { word-break: break-all; font-size: 12px; }
+        .warning { color: #92400e; font-size: 12px; margin-top: 10px; }
+        .buttons { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>✅ Практика успешно добавлена!</h1>
+        <p>Спасибо! Ваш опыт поможет другим учителям.</p>
+        
+        <div class="token-box">
+            <strong>🔑 ВАЖНО! Сохраните эту ссылку:</strong><br>
+            <code>http://localhost:3000/delete/<%= token %>/<%= practiceId %></code>
+            <div class="warning">⚠️ Только по этой ссылке вы сможете удалить свою практику. Никому её не давайте!</div>
+        </div>
+        
+        <div class="buttons">
+            <a href="/" class="btn">🏠 На главную</a>
+            <a href="/add" class="btn" style="background: #64748b;">➕ Добавить еще</a>
+            <a href="/practice/<%= practiceId %>" class="btn" style="background: #10b981;">🔍 Посмотреть мою практику</a>
+        </div>
+    </div>
+</body>
+</html>
